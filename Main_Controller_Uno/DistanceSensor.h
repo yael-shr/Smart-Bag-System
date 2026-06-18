@@ -5,32 +5,28 @@
 
 class DistanceSensor {
 private:
-    const int trigPin; // הדק מוצא לדרבון [cite: 253]
-    const int echoPin; // הדק מבוא לקבלת הד [cite: 253]
-    const int threshold = 7; // מרחק סף בס"מ לפי הגדרת DIS [cite: 334]
+    const int trigPin;
+    const int echoPin; 
+    const int threshold = 7; 
 
 public:
-    // בנאי - מגדיר איזה פינים מחוברים [cite: 252]
     DistanceSensor(int trig, int echo) : trigPin(trig), echoPin(echo) {}
 
-    // אתחול מצב הפינים
     void init() {
         pinMode(trigPin, OUTPUT); 
         pinMode(echoPin, INPUT);  
     }
 
-    // הפעולה המרכזית שדוגמת את המרחק [cite: 253]
     int readDistance() {
         digitalWrite(trigPin, HIGH);
-        delayMicroseconds(10); // פולס ברוחב 10 מיקרו-שנייה [cite: 253]
+        delayMicroseconds(10); 
         digitalWrite(trigPin, LOW);
 
-        long duration = pulseIn(echoPin, HIGH); // מדידת זמן חזרת ההד
-        int distance = duration / 58; // חישוב לפי מהירות הקול [cite: 251, 398]
+        long duration = pulseIn(echoPin, HIGH); 
+        int distance = duration / 58; 
         return distance;
     }
 
-    // בדיקה האם השקית מלאה
     bool isFull() {
         return readDistance() <= threshold; 
     }
