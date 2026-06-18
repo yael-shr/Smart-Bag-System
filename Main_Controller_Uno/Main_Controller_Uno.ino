@@ -4,8 +4,8 @@
 #include "DisplayManager.h"
 #include <Adafruit_ILI9341.h>
 
-#define DISTANCE_THRESHOLD 7 // מרחק סף בס"מ [cite: 334]
-#define WEIGHT_LIMIT 20      // משקל מקסימלי בגרמים [cite: 333]
+#define DISTANCE_THRESHOLD 7
+#define WEIGHT_LIMIT 20
 
 Adafruit_ILI9341 tft = Adafruit_ILI9341(10, 9, 7); 
 
