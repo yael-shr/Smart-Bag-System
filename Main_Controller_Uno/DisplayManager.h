@@ -1,10 +1,9 @@
 #ifndef DISPLAY_MANAGER_H
 #define DISPLAY_MANAGER_H
 
-#include <Adafruit_GFX.h>    // ספריית הגרפיקה הכללית
-#include <Adafruit_ILI9341.h> // הספרייה שהתקנת הרגע
+#include <Adafruit_GFX.h> 
+#include <Adafruit_ILI9341.h> 
 
-// הגדרת צבעים לפי ה-Datasheet [cite: 184]
 #define BLACK   0x0000
 #define WHITE   0xFFFF
 #define RED     0xF800
@@ -18,25 +17,25 @@ public:
 
     void init() {
         tft.begin();
-        tft.setRotation(0); // הגדרת כיוון [cite: 185]
+        tft.setRotation(0); 
         showStartScreen();
     }
 
     void showStartScreen() {
-        tft.fillScreen(BLACK); // ניקוי מסך [cite: 152, 184]
+        tft.fillScreen(BLACK); 
         tft.setTextColor(WHITE);
-        tft.setTextSize(2); // גודל גופן [cite: 186]
+        tft.setTextSize(2); 
         tft.setCursor(20, 50);
-        tft.print("Welcome to SmartBag!"); // הודעת פתיחה [cite: 361-363]
+        tft.print("Welcome to SmartBag!"); 
     }
 
     void updateBagCount(int count) {
         tft.fillScreen(BLACK);
         tft.setCursor(30, 50);
-        tft.print("Next bag released"); // [cite: 376]
+        tft.print("Next bag released"); 
         tft.setCursor(100, 100);
         tft.print("Bag Number: ");
-        tft.print(count); // הצגת המונה [cite: 378]
+        tft.print(count); 
     }
 };
 
