@@ -5,35 +5,28 @@
 
 class BagDispenser {
 private:
-    const int dirPin1;   // פין כיוון 1 (למשל A1 מהספר שלך)
-    const int dirPin2;   // פין כיוון 2 (בדרך כלל אדמה או פין בקרה נוסף)
-    const int speedPin;  // פין ה-PWM (פין 10 מהספר שלך)
+    const int dirPin1;   
+    const int dirPin2;  
+    const int speedPin;  
 
 public:
-    // בנאי: מקבל את מספרי הפינים ושומר אותם
     BagDispenser(int d1, int d2, int speed) 
         : dirPin1(d1), dirPin2(d2), speedPin(speed) {}
 
-    // הכנת הפינים לעבודה (מוגדרים כ-OUTPUT)
     void init() {
         pinMode(dirPin1, OUTPUT);
         pinMode(dirPin2, OUTPUT);
         pinMode(speedPin, OUTPUT);
     }
 
-    // הפעולה המרכזית: מוציאה שקית אחת ועוצרת
-    void releaseOneBag() {
-        // קביעת הכיוון לפי טבלת האמת בספר
+\    void releaseOneBag() {
         digitalWrite(dirPin1, HIGH); 
         digitalWrite(dirPin2, LOW);  
         
-        // קביעת המהירות (225 מתוך 255)
         analogWrite(speedPin, 225);  
         
-        // סיבוב למשך שנייה אחת (זמן שקבעת להוצאת שקית)
         delay(1000); 
         
-        // עצירה מוחלטת של המנוע
         stop();
     }
 
